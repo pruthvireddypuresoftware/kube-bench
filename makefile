@@ -33,7 +33,7 @@ build-docker:
              -t $(IMAGE_NAME) .
 
 tests:
-	GO111MODULE=on go test -v -short -race -timeout 30s -coverprofile=coverage.txt -covermode=atomic ./...
+	GO111MODULE=on go test -v -short -timeout 30s -coverprofile=coverage.txt -covermode=atomic ./...
 
 integration-tests: build-docker
 	GO111MODULE=on go test ./integration/... -v -tags integration -timeout 1200s -args -kubebenchImg=$(IMAGE_NAME)
